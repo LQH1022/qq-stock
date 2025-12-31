@@ -1,0 +1,332 @@
+/* 
+ * stock-trading-simulator-051425/frontend/src/styles/index.css
+ * 全局样式文件：深可可色金融风格主题 (Dark Cocoa Financial Theme)
+ * 适配 Ant Design 5.x 组件样式
+ */
+
+:root {
+  /* --- 核心色板 --- */
+  /* 背景色系：深可可色/深棕色/黑褐色 */
+  --bg-app: #1A1614;          /* 应用背景 - 极深黑褐 */
+  --bg-panel: #2C2420;        /* 组件面板背景 - 深可可 */
+  --bg-panel-hover: #382E29;  /* 悬停/高亮背景 */
+  --bg-input: #120F0E;        /* 输入框极深背景 */
+  
+  /* 文字色系 */
+  --text-main: #E6E1DD;       /* 主内容 - 米白 */
+  --text-sub: #A89F99;        /* 次要信息 - 暖灰 */
+  --text-muted: #6B635F;      /* 弱化/占位符 */
+  
+  /* 品牌色系 */
+  --primary-gold: #D4AF37;    /* 核心强调色 - 经典金 */
+  --primary-hover: #E5C558;   /* 金色悬停 */
+  --accent-blue: #177DDC;     /* 辅助科技蓝 */
+  
+  /* 金融语义色 (中国大陆习惯：红涨绿跌) */
+  --stock-up: #FF4D4F;        /* 涨 */
+  --stock-down: #52C41A;      /* 跌 */
+  
+  /* 边框与分割线 */
+  --border-color: #443B36;
+}
+
+/* --- 基础重置 --- */
+body, html {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden; /* 应用级全屏，内部滚动 */
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- 滚动条美化 --- */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-app); 
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color); 
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted); 
+}
+
+/* --- Ant Design 组件深度覆盖 (Dark Theme Adaptation) --- */
+
+/* 1. 布局 Layout */
+.ant-layout {
+  background: var(--bg-app) !important;
+}
+.ant-layout-header {
+  background: var(--bg-panel) !important;
+  border-bottom: 1px solid var(--border-color);
+  padding: 0 24px;
+  height: 64px;
+  line-height: 64px;
+  color: var(--text-main);
+}
+.ant-layout-sider {
+  background: var(--bg-panel) !important;
+  border-right: 1px solid var(--border-color);
+}
+.ant-layout-content {
+  background: var(--bg-app);
+  color: var(--text-main);
+}
+
+/* 2. 卡片 Card */
+.ant-card {
+  background: var(--bg-panel) !important;
+  border-color: var(--border-color) !important;
+  border-radius: 8px;
+}
+.ant-card-head {
+  border-bottom: 1px solid var(--border-color) !important;
+  color: var(--primary-gold) !important;
+  font-weight: 600;
+  min-height: 48px;
+}
+.ant-card-head-title {
+  color: var(--primary-gold) !important;
+}
+.ant-card-body {
+  color: var(--text-main) !important;
+  padding: 16px !important;
+}
+
+/* 3. 表格 Table */
+.ant-table {
+  background: transparent !important;
+  color: var(--text-main) !important;
+}
+.ant-table-thead > tr > th {
+  background: var(--bg-panel-hover) !important;
+  color: var(--text-sub) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  font-weight: 500;
+}
+.ant-table-tbody > tr > td {
+  border-bottom: 1px solid var(--border-color) !important;
+  color: var(--text-main) !important;
+  transition: background 0.3s;
+}
+.ant-table-tbody > tr.ant-table-row:hover > td {
+  background: var(--bg-panel-hover) !important;
+}
+/* 空状态 */
+.ant-empty-description {
+  color: var(--text-sub) !important;
+}
+.ant-empty-normal {
+  color: var(--text-muted) !important;
+}
+
+/* 4. 按钮 Button */
+/* 主按钮 - 金色 */
+.ant-btn-primary {
+  background-color: var(--primary-gold) !important;
+  border-color: var(--primary-gold) !important;
+  color: #1A1614 !important; /* 深色字 */
+  font-weight: bold;
+  box-shadow: none;
+}
+.ant-btn-primary:hover, .ant-btn-primary:focus {
+  background-color: var(--primary-hover) !important;
+  border-color: var(--primary-hover) !important;
+}
+/* 默认/幽灵按钮 */
+.ant-btn-default, .ant-btn-dashed {
+  background-color: transparent !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-main) !important;
+}
+.ant-btn-default:hover {
+  color: var(--primary-gold) !important;
+  border-color: var(--primary-gold) !important;
+}
+/* 危险按钮 */
+.ant-btn-dangerous {
+  color: var(--stock-up) !important;
+  border-color: var(--stock-up) !important;
+}
+
+/* 5. 输入框 Input & Select */
+.ant-input, .ant-input-number, .ant-select-selector {
+  background-color: var(--bg-input) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-main) !important;
+}
+.ant-input:hover, .ant-input:focus, .ant-select-selector:hover {
+  border-color: var(--primary-gold) !important;
+}
+.ant-input-number-handler-wrap {
+  background: var(--bg-panel) !important;
+  border-left: 1px solid var(--border-color) !important;
+}
+.ant-input-number-handler {
+  border-top: 1px solid var(--border-color) !important;
+}
+.ant-input-number-handler:hover .ant-input-number-handler-up-inner,
+.ant-input-number-handler:hover .ant-input-number-handler-down-inner {
+  color: var(--primary-gold) !important;
+}
+/* 下拉菜单 */
+.ant-select-dropdown {
+  background-color: var(--bg-panel) !important;
+  border: 1px solid var(--border-color);
+  padding: 4px;
+}
+.ant-select-item {
+  color: var(--text-main) !important;
+  border-radius: 4px;
+}
+.ant-select-item-option-selected {
+  background-color: var(--bg-panel-hover) !important;
+  color: var(--primary-gold) !important;
+  font-weight: 600;
+}
+.ant-select-item-option-active {
+  background-color: var(--bg-panel-hover) !important;
+}
+
+/* 6. 文字 Typography */
+h1, h2, h3, h4, h5 {
+  color: var(--text-main) !important;
+}
+.ant-typography {
+  color: var(--text-main) !important;
+}
+.ant-typography-secondary {
+  color: var(--text-sub) !important;
+}
+
+/* 7. 弹窗 Modal */
+.ant-modal-content {
+  background-color: var(--bg-panel) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border-color);
+}
+.ant-modal-header {
+  background-color: var(--bg-panel) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+.ant-modal-title {
+  color: var(--primary-gold) !important;
+}
+.ant-modal-close {
+  color: var(--text-sub) !important;
+}
+.ant-modal-close:hover {
+  color: var(--primary-gold) !important;
+}
+
+/* 8. 标签页 Tabs */
+.ant-tabs {
+  color: var(--text-main) !important;
+}
+.ant-tabs-tab {
+  color: var(--text-sub) !important;
+}
+.ant-tabs-tab:hover {
+  color: var(--primary-gold) !important;
+}
+.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: var(--primary-gold) !important;
+  text-shadow: 0 0 0.25px currentColor;
+}
+.ant-tabs-ink-bar {
+  background: var(--primary-gold) !important;
+}
+
+/* 9. 列表 List */
+.ant-list-item {
+  border-block-end-color: var(--border-color) !important;
+  color: var(--text-main) !important;
+}
+.ant-list-item-meta-title {
+  color: var(--primary-gold) !important;
+}
+.ant-list-item-meta-description {
+  color: var(--text-sub) !important;
+}
+
+/* 10. 加载 Spin */
+.ant-spin-dot-item {
+  background-color: var(--primary-gold) !important;
+}
+
+/* --- 辅助样式工具类 --- */
+
+/* 颜色辅助 */
+.text-up { color: var(--stock-up) !important; }
+.text-down { color: var(--stock-down) !important; }
+.text-gold { color: var(--primary-gold) !important; }
+.text-muted { color: var(--text-sub) !important; }
+.bg-panel { background-color: var(--bg-panel); }
+
+/* 布局辅助 */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+.mt-2 { margin-top: 8px; }
+.mb-2 { margin-bottom: 8px; }
+.p-2 { padding: 16px; }
+
+/* Logo 样式 */
+.app-logo {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--primary-gold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  user-select: none;
+}
+
+/* 涨跌幅胶囊样式 */
+.trend-tag {
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.trend-tag.up {
+  background: rgba(255, 77, 79, 0.1);
+  color: var(--stock-up);
+}
+.trend-tag.down {
+  background: rgba(82, 196, 26, 0.1);
+  color: var(--stock-down);
+}
+
+/* 策略分析结果容器 */
+.strategy-result-box {
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  padding: 16px;
+  border-radius: 8px;
+  margin-top: 16px;
+}
